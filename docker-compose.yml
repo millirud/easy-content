@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  video-api:
+    container_name: video-api
+    build:
+      context: ./video-api
+      dockerfile: Dockerfile
+    volumes:
+      - ./video-api:/home/app
+    tty: true
+    stdin_open: true
+    command: bash
