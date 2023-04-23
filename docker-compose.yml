@@ -11,3 +11,12 @@ services:
     tty: true
     stdin_open: true
     command: bash
+
+
+  storage-api:
+    container_name: storage-api
+    build:
+      context: ./storage-api
+      dockerfile: Dockerfile
+    volumes:
+      - ./storage-api:/home/app
