@@ -18,6 +18,9 @@ services:
     build:
       context: ./storage-api
       dockerfile: Dockerfile
+    depends_on:
+      minio:
+        condition: service_started
     ports:
       - 8080:8080
     env_file:
