@@ -28,6 +28,18 @@ services:
     volumes:
       - ./storage-api:/home/app
 
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/home/app
+      - /home/app/node_modules
+
   minio:
     image: minio/minio:edge
     volumes:
