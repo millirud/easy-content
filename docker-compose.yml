@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./gateway:/home/app
+    env_file:
+      - ./gateway/.env
     ports:
       - 8082:8080
 

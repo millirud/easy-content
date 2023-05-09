@@ -61,7 +61,7 @@ func main() {
 	err = stream.Run()
 
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("catched error: ", err)
 	}
 
 	fmt.Println("end")
