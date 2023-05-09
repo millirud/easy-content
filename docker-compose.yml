@@ -10,6 +10,18 @@ services:
       - ./gateway:/home/app
     ports:
       - 8082:8080
+
+  
+  queue:
+    container_name: queue
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+    image: rabbitmq:3.11.15-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    env_file:
+      - ./conf/.rabbitmq.env
   
 
   video-api:
