@@ -44,7 +44,10 @@ func main() {
 	//e := &myWriter{}
 
 	stream := ffmpeg.
-		Input(inputFile).
+		Input(inputFile, ffmpeg.KwArgs{
+			"ss": "00:00:20.000",
+			"to": "00:00:30.000",
+		}).
 		Output("./data/out1.MOV", ffmpeg.KwArgs{
 			// "c:v":    "vp9",
 			// "preset": "medium",
