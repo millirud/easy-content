@@ -1,6 +1,17 @@
 version: "3"
 
 services:
+  gateway:
+    container_name: gateway
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    volumes:
+      - ./gateway:/home/app
+    ports:
+      - 8082:8080
+  
+
   video-api:
     container_name: video-api
     build:
