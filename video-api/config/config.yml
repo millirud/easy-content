@@ -1,0 +1,5 @@
+app:
+  app_name: 'video api'
+  app_description: "video api"
+  app_version: '1.0.0'
+

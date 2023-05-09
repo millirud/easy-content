@@ -1,0 +1,26 @@
+info:
+  contact: {}
+paths:
+  /healthz:
+    get:
+      description: Liveness probe
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Liveness probe
+      tags:
+      - probe
+  /healthz/ready:
+    get:
+      description: Liveness probe
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Liveness probe
+      tags:
+      - probe
+swagger: "2.0"

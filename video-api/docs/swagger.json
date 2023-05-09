@@ -1,0 +1,42 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/healthz": {
+            "get": {
+                "description": "Liveness probe",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "probe"
+                ],
+                "summary": "Liveness probe",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/healthz/ready": {
+            "get": {
+                "description": "Liveness probe",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "probe"
+                ],
+                "summary": "Liveness probe",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}

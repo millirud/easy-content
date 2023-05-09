@@ -8,9 +8,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./video-api:/home/app
-    tty: true
-    stdin_open: true
-    command: bash
+    ports:
+      - 8081:8080
 
 
   storage-api:
