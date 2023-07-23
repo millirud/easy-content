@@ -60,7 +60,7 @@ func NewGin(
 
 	handler.Use(middleware.NewRequestidMiddleware())
 
-	handler.GET("/v1/get", storageHandler.Upload)
+	handler.GET("/v1/view/:bucket/:filename", storageHandler.Get)
 	handler.POST("/v1/upload", storageHandler.Upload)
 
 	return handler
@@ -75,6 +75,7 @@ func NewStorageHandler(
 
 type StorageUseCase interface {
 	Upload(ctx context.Context, file entity.File) (*entity.UploadedInfo, error)
+	Get(ctx context.Context, bucket string, filename string) (*entity.File, func(), error)
 }
 
 func NewStorageUseCase(log *zap.Logger, s3 S3) StorageUseCase {
@@ -92,6 +93,7 @@ type S3 interface {
 
 	GetObject(
 		ctx context.Context,
+		bucket string,
 		filename string,
 	) (*entity.File, func(), error)
 }

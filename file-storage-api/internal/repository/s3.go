@@ -84,3 +84,32 @@ func (s *s3) PutObject(
 
 	return entity.NewUploadedInfo(filename, s.bucket), nil
 }
+
+func (s *s3) GetObject(
+	ctx context.Context,
+	bucket string,
+	filename string,
+) (*entity.File, func(), error) {
+	obj, err := s.getClient().GetObject(ctx, bucket, filename, minio.GetObjectOptions{})
+
+	if err != nil {
+		return nil, nil, err
+	}
+
+	stat, err := obj.Stat()
+
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return entity.NewFile(
+			obj,
+			stat.Size,
+			stat.ContentType,
+			filename,
+		),
+		func() {
+			obj.Close()
+		},
+		nil
+}

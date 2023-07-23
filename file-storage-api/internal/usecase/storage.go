@@ -21,6 +21,7 @@ type (
 
 		GetObject(
 			ctx context.Context,
+			bucket string,
 			filename string,
 		) (*entity.File, func(), error)
 	}
@@ -51,4 +52,8 @@ func (s *storageUseCase) Upload(ctx context.Context, file entity.File) (*entity.
 			"request-id": requestid.GetRequestId(ctx),
 		},
 	)
+}
+
+func (s *storageUseCase) Get(ctx context.Context, bucket string, filename string) (*entity.File, func(), error) {
+	return s.storage.GetObject(ctx, bucket, filename)
 }
