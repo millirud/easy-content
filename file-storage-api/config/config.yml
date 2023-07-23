@@ -1,0 +1,5 @@
+app:
+  app_name: 'go-service-boilerplate title'
+  app_description: "go-service-boilerplate description"
+  app_version: '1.0.0'
+
