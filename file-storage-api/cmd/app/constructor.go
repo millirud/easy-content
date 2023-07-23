@@ -89,6 +89,11 @@ type S3 interface {
 		contentType string,
 		metadata map[string]string,
 	) (*entity.UploadedInfo, error)
+
+	GetObject(
+		ctx context.Context,
+		filename string,
+	) (*entity.File, func(), error)
 }
 
 func NewS3(
