@@ -13,6 +13,7 @@ RUN go install github.com/cosmtrek/air@v1.29.0 && \
     go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.51.2 && \
     go install github.com/swaggo/swag/cmd/swag@v1.8.10 && \
     go install github.com/go-delve/delve/cmd/dlv@v1.20.1 && \
+    go install golang.org/x/lint/golint@latest && \
     go mod download
 
 CMD ["air", "-c", ".air.toml"]

@@ -58,6 +58,7 @@ func NewGin(
 ) *gin.Engine {
 	handler := gin.New()
 
+	handler.Use(middleware.NewLogger())
 	handler.Use(middleware.NewRequestidMiddleware())
 
 	handler.GET("/v1/view/:bucket/:filename", storageHandler.Get)
