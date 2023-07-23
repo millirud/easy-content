@@ -10,8 +10,8 @@ type (
 	// Config -.
 	Config struct {
 		App `yaml:"app"`
-		HTTP
 		Log
+		RabbitMq
 	}
 
 	// App -.
@@ -21,14 +21,17 @@ type (
 		Version     string `env-required:"true" yaml:"app_version"`
 	}
 
-	// HTTP -.
-	HTTP struct {
-		Port string `env-required:"true"  env:"HTTP_PORT"`
-	}
-
 	// Log -.
 	Log struct {
 		Level string `env-required:"true" env:"LOG_LEVEL"`
+	}
+
+	// MQ
+	RabbitMq struct {
+		User     string `env-required:"true" env:"RABBITMQ_USER"`
+		Password string `env-required:"true" env:"RABBITMQ_PASS"`
+		Host     string `env-required:"true" env:"RABBITMQ_HOST"`
+		Port     int    `env-required:"true" env:"RABBITMQ_PORT"`
 	}
 )
 
