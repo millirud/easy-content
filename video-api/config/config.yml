@@ -3,3 +3,8 @@ app:
   app_description: "video api"
   app_version: '1.0.0'
 
+transform:
+  transform_queue: "video-transform"
+
+storage:
+  storage_timeout: 5000

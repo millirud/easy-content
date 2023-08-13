@@ -12,6 +12,8 @@ type (
 		App `yaml:"app"`
 		Log
 		RabbitMq
+		Transform `yaml:"transform"`
+		Storage   `yaml:"storage"`
 	}
 
 	// App -.
@@ -32,6 +34,15 @@ type (
 		Password string `env-required:"true" env:"RABBITMQ_PASS"`
 		Host     string `env-required:"true" env:"RABBITMQ_HOST"`
 		Port     int    `env-required:"true" env:"RABBITMQ_PORT"`
+	}
+
+	Transform struct {
+		Queue string `env-required:"true" yaml:"transform_queue"`
+	}
+
+	Storage struct {
+		Url     string `env-required:"true" env:"STORAGE_URL"`
+		Timeout int    `env-required:"true" yaml:"storage_timeout"`
 	}
 )
 
