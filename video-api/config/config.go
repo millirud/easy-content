@@ -1,7 +1,10 @@
 package config
 
 import (
+	"bytes"
 	"fmt"
+
+	_ "embed"
 
 	"github.com/ilyakaznacheev/cleanenv"
 )
@@ -46,11 +49,16 @@ type (
 	}
 )
 
+var (
+	//go:embed config.yml
+	configContent []byte
+)
+
 // NewConfig returns app config.
 func NewConfig() (*Config, error) {
 	cfg := &Config{}
 
-	err := cleanenv.ReadConfig("./config/config.yml", cfg)
+	err := cleanenv.ParseYAML(bytes.NewReader(configContent), cfg)
 	if err != nil {
 		return nil, fmt.Errorf("config error: %w", err)
 	}
